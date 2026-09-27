@@ -1,0 +1,29 @@
+data:
+  path: data/bootstrap_aqi.csv
+
+forecast:
+  horizon_hours: 24
+  holdout_days: 30
+
+features:
+  lag_hours:
+    - 1
+    - 3
+    - 6
+    - 12
+    - 24
+
+  rolling_windows:
+    - 6
+    - 12
+    - 24
+
+model:
+  learning_rate: 0.05
+  max_iter: 300
+  max_leaf_nodes: 31
+  min_samples_leaf: 20
+  random_state: 42
+
+output:
+  model_path: artifacts/model.joblib
