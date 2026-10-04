@@ -20,3 +20,20 @@ def test_feature_shape(hourly_aqi_df):
     assert expected_columns.issubset(result.columns)
 
     assert len(result) == len(hourly_aqi_df)
+
+
+def test_lag_features_use_past_values(
+    hourly_aqi_df,
+):
+    result = build_features(
+        hourly_aqi_df,
+        horizon_hours=24,
+        lag_hours=[1],
+        rolling_windows=[6],
+    )
+
+    current_row = result.iloc[10]
+
+    previous_row = result.iloc[9]
+
+    assert current_row["pm25_lag_1h"] == previous_row["pm25"]
