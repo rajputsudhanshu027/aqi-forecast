@@ -9,3 +9,9 @@ data/
 
 # Virtual environments
 .venv
+.env
+data/raw/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+data/validated/
